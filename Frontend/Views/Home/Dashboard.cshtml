@@ -1,0 +1,59 @@
+@model List<OrderViewModel>
+@{ Layout = "_Layout"; }
+
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <h2>Dashboard</h2>
+    <h4>User: <small class="text-muted">@ViewBag.UserId</small></h4>
+</div>
+<div class="alert alert-success fs-4">Balance: $@ViewBag.Balance</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-3 mb-3">
+            <h4>Top Up</h4>
+            <form asp-action="TopUp" method="post">
+                <input type="hidden" name="userId" value="@ViewBag.UserId" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="number" name="amount" class="form-control" placeholder="Amount" required min="1" step="1"/>
+                    <button class="btn btn-success">Add Funds</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3 mb-3">
+            <h4>Buy Item</h4>
+            <form asp-action="Buy" method="post">
+                <input type="hidden" name="userId" value="@ViewBag.UserId" />
+                <div class="mb-2">
+                    <input type="text" name="desc" class="form-control" placeholder="Description" required />
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" name="amount" class="form-control" placeholder="Cost" required min="1" step="1" />
+                    <button class="btn btn-warning">Buy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<h3 class="mt-4">Orders</h3>
+<table class="table table-striped">
+    <thead>
+        <tr><th>ID</th><th>Description</th><th>Amount</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr class="@(order.Status == "FINISHED" ? "table-success" : (order.Status == "CANCELLED" ? "table-danger" : ""))">
+                <td>@order.Id</td>
+                <td>@order.Description</td>
+                <td>@order.Amount</td>
+                <td><strong>@order.Status</strong></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

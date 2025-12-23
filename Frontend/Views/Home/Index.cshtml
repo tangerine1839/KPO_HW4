@@ -1,0 +1,12 @@
+﻿@{ Layout = "_Layout"; }
+<div class="text-center mt-5">
+    <h1>Welcome to the Shop</h1>
+    <div class="card p-4 mx-auto" style="max-width: 400px;">
+        <h3>Login</h3>
+        <p>Use a GUID to identify yourself.</p>
+        <form asp-action="CreateAccount" method="post">
+            <input type="text" name="userId" class="form-control mb-3" required value="@Guid.NewGuid()" />
+            <button class="btn btn-primary w-100">Login / Create Account</button>
+        </form>
+    </div>
+</div>
