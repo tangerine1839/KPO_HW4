@@ -12,19 +12,19 @@
     - Пополнение счёта положительной суммой
     - Просмотр баланса счёта
 - **Frontend** 
-  - Работает через API Gateway по HTTP
+    - Работает через API Gateway по HTTP
     - Логин/создание счёта по `userId` (GUID)
     - Просмотр и пополнение баланса
     - Создание заказа и просмотр списка заказов со статусами `NEW` / `FINISHED` / `CANCELLED`
    
-  - **RabbitMQ**  
+- **RabbitMQ**  
   - Брокер сообщений с at‑least‑once доставкой, используется для связи Order Service и Payments Service
-   - **PostgreSQL**  
+ - **PostgreSQL**  
   - Отдельная БД для Order Service и отдельная БД для Payments Service
  
     **Команда запуска**: docker-compose up --build
     
-После запуска доступны:
+## После запуска доступны:
 - Frontend: `http://localhost:5000`  
 - Order Service Swagger: `http://localhost:8081/swagger`  
 - Payments Service Swagger: `http://localhost:8082/swagger`  
