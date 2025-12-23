@@ -19,10 +19,10 @@
    
 - **RabbitMQ**  
   - Брокер сообщений с at‑least‑once доставкой, используется для связи Order Service и Payments Service
- - **PostgreSQL**  
+- **PostgreSQL**  
   - Отдельная БД для Order Service и отдельная БД для Payments Service
- 
-    **Команда запуска**: docker-compose up --build
+
+## Команда запуска: docker-compose up --build
     
 ## После запуска доступны:
 - Frontend: `http://localhost:5000`  
